@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnectionBD {
     private static final String URL="jdbc:mysql://localhost:3306/biblioteca";
     private static final String USUARIO="root";
-    private static final String PASSWORD="password1305";
+    private static final String PASSWORD="Muchas.25letras";
     
     private static HikariDataSource dataSource;
     

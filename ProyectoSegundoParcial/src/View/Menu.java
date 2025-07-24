@@ -38,6 +38,8 @@ public class Menu extends javax.swing.JDialog {
         btn_Autores = new javax.swing.JButton();
         btn_Categoria = new javax.swing.JButton();
         jLabelBiblioteca = new javax.swing.JLabel();
+        btn_TipoUsuario = new javax.swing.JButton();
+        btn_Devoluiones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
@@ -77,24 +79,43 @@ public class Menu extends javax.swing.JDialog {
         jLabelBiblioteca.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelBiblioteca.setText("Biblioteca");
 
+        btn_TipoUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_TipoUsuario.setText("TipoUsuario");
+        btn_TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TipoUsuarioActionPerformed(evt);
+            }
+        });
+
+        btn_Devoluiones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Devoluiones.setText("Devoluiones");
+        btn_Devoluiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DevoluionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Autores))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Categoria))
-                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_Autores, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                        .addComponent(btn_Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_TipoUsuario))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_Rol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Devoluiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +126,15 @@ public class Menu extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Libros)
                     .addComponent(btn_Rol))
-                .addGap(50, 50, 50)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Categoria)
-                    .addComponent(btn_Autores))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(btn_Autores)
+                    .addComponent(btn_Categoria))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_TipoUsuario)
+                    .addComponent(btn_Devoluiones))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,6 +167,20 @@ public class Menu extends javax.swing.JDialog {
         
         this.dispose();
     }//GEN-LAST:event_btn_CategoriaActionPerformed
+
+    private void btn_TipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TipoUsuarioActionPerformed
+        // TODO add your handling code here:
+        new ListadoTipoUsuario().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_TipoUsuarioActionPerformed
+
+    private void btn_DevoluionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DevoluionesActionPerformed
+        // TODO add your handling code here:
+        new ListadoDevoluciones().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_DevoluionesActionPerformed
    
     /**this.setVisible(false);
      * @param args the command line arguments
@@ -183,8 +222,10 @@ public class Menu extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Autores;
     private javax.swing.JButton btn_Categoria;
+    private javax.swing.JButton btn_Devoluiones;
     private javax.swing.JButton btn_Libros;
     private javax.swing.JButton btn_Rol;
+    private javax.swing.JButton btn_TipoUsuario;
     private javax.swing.JLabel jLabelBiblioteca;
     // End of variables declaration//GEN-END:variables
 }
