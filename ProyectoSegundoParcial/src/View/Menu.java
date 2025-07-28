@@ -88,7 +88,7 @@ public class Menu extends javax.swing.JDialog {
         });
 
         btn_Devoluiones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_Devoluiones.setText("Devoluiones");
+        btn_Devoluiones.setText("Devoluciones");
         btn_Devoluiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DevoluionesActionPerformed(evt);
@@ -115,7 +115,7 @@ public class Menu extends javax.swing.JDialog {
                     .addComponent(btn_Rol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_Categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_Devoluiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
