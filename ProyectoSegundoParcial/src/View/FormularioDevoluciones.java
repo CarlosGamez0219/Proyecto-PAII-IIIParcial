@@ -37,7 +37,7 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
         if(mode.equals("INS")){
             btn_Accion.setText("Insertar");
         }else if(mode.equals("UPD")){
-            Devoluciones devoluciones = (Devoluciones) dao.getByLibrosID(DevolucionID);
+            Devoluciones devoluciones = (Devoluciones) dao.getByDevolucionID(DevolucionID);
             txt_EjemplarID.setText(String.valueOf(devoluciones.getEjemplarID()));
             txt_PrestamoID.setText(String.valueOf(devoluciones.getPrestamoID()));
             txt_FechaDevolucion.setText(String.valueOf(devoluciones.getFechaDevolucion()));
@@ -48,7 +48,7 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
             btn_Accion.setText("Actualizar");
             
         }else if(mode.equals("DLT")){
-            Devoluciones devoluciones = (Devoluciones) dao.getByLibrosID(DevolucionID);
+            Devoluciones devoluciones = (Devoluciones) dao.getByDevolucionID(DevolucionID);
             txt_EjemplarID.setText(String.valueOf(devoluciones.getEjemplarID()));
             txt_EjemplarID.setEnabled(false);
             txt_PrestamoID.setText(String.valueOf(devoluciones.getPrestamoID()));

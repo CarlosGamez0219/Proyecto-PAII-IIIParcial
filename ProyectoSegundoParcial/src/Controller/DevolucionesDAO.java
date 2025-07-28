@@ -87,7 +87,7 @@ public class DevolucionesDAO {
         }
     }
     
-    public Object getByLibrosID(int DevolucionID){
+    public Object getByDevolucionID(int DevolucionID){
         String sql = "SELECT * FROM Devoluciones WHERE DevolucionID = ?;";
         Devoluciones devoluciones = new Devoluciones();
         try (Connection con = ConnectionBD.geConnection()){
