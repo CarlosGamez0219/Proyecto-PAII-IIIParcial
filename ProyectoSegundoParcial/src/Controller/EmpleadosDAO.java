@@ -24,7 +24,7 @@ public class EmpleadosDAO {
         String sql = "SELECT e.EmpleadoID, e.NombreEmpleado, e.Status, r.RolDescripcion " +
                      "FROM Empleados e " +
                      "JOIN Rol r ON e.RolID = r.RolID;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -41,7 +41,7 @@ public class EmpleadosDAO {
     public boolean insert(Object object){
         Empleados empleados = (Empleados) object;
         String sql = "INSERT INTO Empleados (EmpleadoID, NombreEmpleado, RolDescripcion, Status) VALUES (?, ?, ?, ?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, empleados.getEmpleadoID());
              pst.setString(2, empleados.getNombreEmpleado());
@@ -57,7 +57,7 @@ public class EmpleadosDAO {
     public boolean update(Object object){
         Empleados empleados = (Empleados) object;
         String sql = "UPDATE Empleados SET EmpleadoID = ?, NombreEmpleado = ?, RolDescripcion = ?, Status = ? WHERE EmpleadoID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, empleados.getEmpleadoID());
              pst.setString(2, empleados.getNombreEmpleado());
@@ -73,7 +73,7 @@ public class EmpleadosDAO {
     
     public boolean delete(int EmpleadoID){
         String sql = "DELETE FROM Empleados WHERE EmpleadoID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1,EmpleadoID);
              return pst.executeUpdate()>0;
@@ -87,7 +87,7 @@ public class EmpleadosDAO {
     public Object getByEmpleadoID(int EmpleadoID){
         String sql = "SELECT * FROM Empleados WHERE EmpleadoID = ?;";
         Empleados empleados = new Empleados();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, EmpleadoID);
             

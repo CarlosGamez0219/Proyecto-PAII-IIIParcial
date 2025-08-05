@@ -23,7 +23,7 @@ public class RolDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Rol;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -40,7 +40,7 @@ public class RolDAO {
     public boolean insert(Object object){
         Rol rol = (Rol) object;
         String sql = "INSERT INTO Rol (RolDescripcion) VALUES (?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, rol .getRolDescripcion());
              return pst.executeUpdate()>0;
@@ -54,7 +54,7 @@ public class RolDAO {
     public boolean update(Object object){
        Rol rol = (Rol) object;
         String sql = "UPDATE rol SET RolDescripcion = ? WHERE RolID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, rol .getRolDescripcion());
              pst.setInt(2, rol.getRolID());
@@ -68,7 +68,7 @@ public class RolDAO {
     
     public boolean delete(int RolID){
         String sql = "DELETE FROM Rol WHERE RolID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, RolID);
              return pst.executeUpdate()>0;
@@ -82,7 +82,7 @@ public class RolDAO {
     public Object getByRolID(int RolID){
         String sql = "SELECT * FROM Rol WHERE RolID = ?;";
         Rol rol = new Rol();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, RolID);
             

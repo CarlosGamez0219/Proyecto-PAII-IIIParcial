@@ -22,7 +22,7 @@ public class TipoUsuarioDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM TipoUsuario;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -39,9 +39,9 @@ public class TipoUsuarioDAO {
     public boolean insert(Object object){
         TipoUsuario tipousuario = (TipoUsuario) object;
         String sql = "INSERT INTO tipousuario (DescripcionUsuario) VALUES (?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
-             pst.setString(1, tipousuario .getDescripcionUsuario());
+             pst.setString(1, tipousuario.getDescripcionUsuario());
              return pst.executeUpdate()>0;
         
         }catch(SQLException ex){
@@ -53,9 +53,9 @@ public class TipoUsuarioDAO {
     public boolean update(Object object){
        TipoUsuario tipousuario = (TipoUsuario) object;
         String sql = "UPDATE TipoUsuario SET DescripcionUsuario= ? WHERE TipoUsuarioID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
-             pst.setString(1, tipousuario .getDescripcionUsuario());
+             pst.setString(1, tipousuario.getDescripcionUsuario());
              pst.setInt(2, tipousuario.getTipoUsuarioID());
              return pst.executeUpdate()>0;
         
@@ -67,7 +67,7 @@ public class TipoUsuarioDAO {
     
     public boolean delete(int TipoUsuarioID){
         String sql = "DELETE FROM TipoUsuario WHERE TipoUsuarioID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, TipoUsuarioID);
              return pst.executeUpdate()>0;
@@ -81,7 +81,7 @@ public class TipoUsuarioDAO {
     public Object getByTipoUsuarioID(int TipoUsuarioID){
         String sql = "SELECT * FROM TipoUsuario WHERE TipoUsuarioID = ?;";
         TipoUsuario tipousuario = new TipoUsuario();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, TipoUsuarioID);
             

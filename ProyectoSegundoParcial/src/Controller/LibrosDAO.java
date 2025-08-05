@@ -19,7 +19,7 @@ public class LibrosDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Libros;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -38,7 +38,7 @@ public class LibrosDAO {
     public boolean insert(Object object){
         Libros libros = (Libros) object;
         String sql = "INSERT INTO Libros (Titulo, FechaPublicacion, CategoriaID, Edicion) VALUES (?, ?, ?, ?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, libros.getTitulo());
              pst.setDate(2, new java.sql.Date(libros.getFechaPublicacion().getTime())); // Convertir java.util.Date a java.sql.Date
@@ -55,7 +55,7 @@ public class LibrosDAO {
     public boolean update(Object object){
         Libros libros = (Libros) object;
         String sql = "UPDATE Libros SET Titulo = ?, FechaPublicacion = ?, CategoriaID = ?, Edicion = ? WHERE LibrosID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, libros.getTitulo());
              pst.setDate(2, new java.sql.Date(libros.getFechaPublicacion().getTime())); // Convertir java.util.Date a java.sql.Date
@@ -72,7 +72,7 @@ public class LibrosDAO {
     
     public boolean delete(int LibrosID){
         String sql = "DELETE FROM Libros WHERE LibrosID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1,LibrosID);
              return pst.executeUpdate()>0;
@@ -86,7 +86,7 @@ public class LibrosDAO {
     public Object getByLibrosID(int LibrosID){
         String sql = "SELECT * FROM Libros WHERE LibrosID = ?;";
         Libros libros = new Libros();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, LibrosID);
             

@@ -23,7 +23,7 @@ public class PrestamosDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Prestamos;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -42,7 +42,7 @@ public class PrestamosDAO {
      public boolean insert(Object object){
         Prestamos prestamos = (Prestamos) object;
         String sql = "INSERT INTO Prestamos (UsuarioID, EjemplarID, FechaEgreso, FechaDevolucionEstimada, EmpleadoID ) VALUES (?, ?, ?, ?, ?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, prestamos.getUsuarioID());
              pst.setInt(2, prestamos.getEjemplarID());
@@ -60,7 +60,7 @@ public class PrestamosDAO {
     public boolean update(Object object){
         Prestamos prestamos = (Prestamos) object;
         String sql = "UPDATE Prestamos SET UsuarioID = ?, EjemplarID = ?, FechaEgreso = ?, FechaDevolucionEstimada = ?, EmpleadoID = ? WHERE PrestamoID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, prestamos.getUsuarioID());
              pst.setInt(2, prestamos.getEjemplarID());
@@ -78,7 +78,7 @@ public class PrestamosDAO {
     
     public boolean delete(int PrestamoID){
         String sql = "DELETE FROM Prestamos WHERE PrestamoID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1,PrestamoID);
              return pst.executeUpdate()>0;
@@ -92,7 +92,7 @@ public class PrestamosDAO {
     public Object getByLibrosID(int PrestamoID){
         String sql = "SELECT * FROM Prestamos WHERE PrestamoID = ?;";
         Prestamos prestamos = new Prestamos();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, PrestamoID);
             

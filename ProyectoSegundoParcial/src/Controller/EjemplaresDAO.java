@@ -23,7 +23,7 @@ public class EjemplaresDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Ejemplares;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -42,7 +42,7 @@ public class EjemplaresDAO {
      public boolean insert(Object object){
         Ejemplares ejemplares = (Ejemplares) object;
         String sql = "INSERT INTO Ejemplares (LibroID, FechaIngreso, Estado) VALUES (?, ?, ?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, ejemplares.getLibroID());
              pst.setDate(2, new java.sql.Date(ejemplares.getFechaIngreso().getTime())); // Convertir java.util.Date a java.sql.Date
@@ -58,7 +58,7 @@ public class EjemplaresDAO {
      public boolean update(Object object){
         Ejemplares ejemplares = (Ejemplares) object;
         String sql = "UPDATE Ejemplares SET LibroID = ?, FechaIngreso = ?, Estado = ? WHERE EjemplarID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setInt(1, ejemplares.getLibroID());
              pst.setDate(2, new java.sql.Date(ejemplares.getFechaIngreso().getTime())); // Convertir java.util.Date a java.sql.Date
@@ -74,7 +74,7 @@ public class EjemplaresDAO {
     
     public boolean delete(int EjemplarID){
         String sql = "DELETE FROM Ejemplares WHERE EjemplarID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, EjemplarID);
              return pst.executeUpdate()>0;
@@ -88,7 +88,7 @@ public class EjemplaresDAO {
     public Object getByEjemplarID(int EjemplarID){
         String sql = "SELECT * FROM Ejemplares WHERE EjemplarID = ?;";
         Ejemplares ejemplares = new Ejemplares();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, EjemplarID);
             
