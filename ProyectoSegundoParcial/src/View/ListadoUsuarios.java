@@ -76,6 +76,7 @@ public class ListadoUsuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Usuarios);
 
+        btn_Insertar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Insertar.setText("Insertar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +84,7 @@ public class ListadoUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btn_Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Actualizar.setText("Actualizar");
         btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +92,7 @@ public class ListadoUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btn_delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_delete.setText("Eliminar");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +121,7 @@ public class ListadoUsuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Insertar)
                     .addComponent(btn_Actualizar)

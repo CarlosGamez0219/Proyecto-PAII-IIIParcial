@@ -72,6 +72,8 @@ public class FormularioAutores extends javax.swing.JDialog {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Autores");
+        setBackground(new java.awt.Color(204, 204, 204));
 
         jLabelAutorID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelAutorID.setText("AutorID");

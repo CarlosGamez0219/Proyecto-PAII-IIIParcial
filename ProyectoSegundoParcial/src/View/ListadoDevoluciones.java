@@ -65,6 +65,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
         txt_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Devoluciones");
 
         tbl_Devoluciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,6 +80,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Devoluciones);
 
+        btn_Insertar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Insertar.setText("Insertar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +88,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
             }
         });
 
+        btn_Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Actualizar.setText("Actualizar");
         btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +96,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
             }
         });
 
+        txt_delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_delete.setText("Eliminar");
         txt_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +111,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_Insertar)
                         .addGap(132, 132, 132)
@@ -126,7 +130,7 @@ public class ListadoDevoluciones extends javax.swing.JFrame {
                     .addComponent(btn_Insertar)
                     .addComponent(btn_Actualizar)
                     .addComponent(txt_delete))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();

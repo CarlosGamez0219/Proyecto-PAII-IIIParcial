@@ -66,6 +66,7 @@ public class FormularioCategorias extends javax.swing.JDialog {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Categorias");
 
         jLabelCategoriaID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelCategoriaID.setText("CategoriaID");
@@ -75,7 +76,7 @@ public class FormularioCategorias extends javax.swing.JDialog {
 
         txt_CategoriaID.setEnabled(false);
 
-        btn_Accion.setBackground(new java.awt.Color(0, 255, 204));
+        btn_Accion.setBackground(new java.awt.Color(153, 204, 255));
         btn_Accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Accion.setText("Guadar");
         btn_Accion.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +85,7 @@ public class FormularioCategorias extends javax.swing.JDialog {
             }
         });
 
-        btn_Salir.setBackground(new java.awt.Color(0, 204, 153));
+        btn_Salir.setBackground(new java.awt.Color(255, 102, 102));
         btn_Salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Salir.setForeground(new java.awt.Color(255, 255, 255));
         btn_Salir.setText("Salir");
@@ -100,25 +101,22 @@ public class FormularioCategorias extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(btn_Accion))
-                            .addComponent(jLabelCategoriaDesc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_CategoriaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelCategoriaID)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(btn_Salir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(txt_CategoriaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addGap(124, 124, 124)
+                        .addComponent(txt_CategoriaID))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_Accion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Salir)
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelCategoriaDesc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(txt_CategoriaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,15 +125,15 @@ public class FormularioCategorias extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCategoriaID)
                     .addComponent(txt_CategoriaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelCategoriaDesc)
                     .addComponent(txt_CategoriaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Accion)
                     .addComponent(btn_Salir))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();

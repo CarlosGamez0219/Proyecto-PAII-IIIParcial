@@ -62,6 +62,7 @@ public class ListadoPrestamos extends javax.swing.JFrame {
         txt_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Prestamos");
 
         tbl_Prestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,7 +116,7 @@ public class ListadoPrestamos extends javax.swing.JFrame {
                         .addGap(135, 135, 135)
                         .addComponent(txt_delete))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

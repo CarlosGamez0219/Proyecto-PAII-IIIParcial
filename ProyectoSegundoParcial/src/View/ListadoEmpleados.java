@@ -64,6 +64,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
         txt_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Empleados");
 
         tbl_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +79,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Empleados);
 
+        btn_Insertar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Insertar.setText("Insertar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +87,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
             }
         });
 
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +95,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
             }
         });
 
+        txt_delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_delete.setText("Eliminar");
         txt_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,30 +108,28 @@ public class ListadoEmpleados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
                         .addComponent(btn_Insertar)
-                        .addGap(27, 27, 27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_actualizar)
-                        .addGap(27, 27, 27)
+                        .addGap(124, 124, 124)
                         .addComponent(txt_delete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Insertar)
+                    .addComponent(txt_delete)
                     .addComponent(btn_actualizar)
-                    .addComponent(txt_delete))
-                .addGap(0, 68, Short.MAX_VALUE))
+                    .addComponent(btn_Insertar))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         pack();

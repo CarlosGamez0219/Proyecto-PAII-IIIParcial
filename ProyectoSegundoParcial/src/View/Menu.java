@@ -7,6 +7,8 @@ import View.ListadoAutores;
 import View.ListadoLibros;
 import View.ListaRol;
 import View.ListadoCategorias;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Dell
@@ -22,6 +24,16 @@ public class Menu extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/imagenes/Biblioteca.png"));
+        Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        jbl_Bibliteca.setIcon(new ImageIcon(imagenRedimensionada));
+        
+        System.out.println(getClass().getResource("/imagenes/Biblioteca.png"));
+    }
+
+    Menu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -40,8 +52,14 @@ public class Menu extends javax.swing.JDialog {
         jLabelBiblioteca = new javax.swing.JLabel();
         btn_TipoUsuario = new javax.swing.JButton();
         btn_Devoluiones = new javax.swing.JButton();
+        btn_Ejemplares = new javax.swing.JButton();
+        btn_Empleados = new javax.swing.JButton();
+        btn_Prestamos = new javax.swing.JButton();
+        btn_Usuarios = new javax.swing.JButton();
+        jbl_Bibliteca = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Bienvendo a Nuestra Bibliteca");
         setBackground(new java.awt.Color(153, 255, 153));
 
         btn_Libros.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -95,46 +113,93 @@ public class Menu extends javax.swing.JDialog {
             }
         });
 
+        btn_Ejemplares.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Ejemplares.setText("Ejemplares");
+        btn_Ejemplares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EjemplaresActionPerformed(evt);
+            }
+        });
+
+        btn_Empleados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Empleados.setText("Empleados");
+        btn_Empleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EmpleadosActionPerformed(evt);
+            }
+        });
+
+        btn_Prestamos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Prestamos.setText("Prestamos");
+        btn_Prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PrestamosActionPerformed(evt);
+            }
+        });
+
+        btn_Usuarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Usuarios.setText("Usuarios");
+        btn_Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_UsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jLabelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jbl_Bibliteca, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_Autores, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                        .addComponent(btn_Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btn_TipoUsuario))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_Autores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_TipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Ejemplares, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_Rol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_Categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Devoluiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(btn_Devoluiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabelBiblioteca)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelBiblioteca)
+                    .addComponent(jbl_Bibliteca, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Libros)
                     .addComponent(btn_Rol))
-                .addGap(36, 36, 36)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Autores)
                     .addComponent(btn_Categoria))
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_TipoUsuario)
                     .addComponent(btn_Devoluiones))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Ejemplares)
+                    .addComponent(btn_Empleados))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Prestamos)
+                    .addComponent(btn_Usuarios))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,6 +246,34 @@ public class Menu extends javax.swing.JDialog {
         
         this.dispose();
     }//GEN-LAST:event_btn_DevoluionesActionPerformed
+
+    private void btn_EjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EjemplaresActionPerformed
+        // TODO add your handling code here:
+        new ListadoEjemplares().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_EjemplaresActionPerformed
+
+    private void btn_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadosActionPerformed
+        // TODO add your handling code here:
+        new ListadoEmpleados().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_EmpleadosActionPerformed
+
+    private void btn_PrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrestamosActionPerformed
+        // TODO add your handling code here:
+        new ListadoPrestamos().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_PrestamosActionPerformed
+
+    private void btn_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UsuariosActionPerformed
+        // TODO add your handling code here:
+        new ListadoUsuarios().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_UsuariosActionPerformed
    
     /**this.setVisible(false);
      * @param args the command line arguments
@@ -223,9 +316,14 @@ public class Menu extends javax.swing.JDialog {
     private javax.swing.JButton btn_Autores;
     private javax.swing.JButton btn_Categoria;
     private javax.swing.JButton btn_Devoluiones;
+    private javax.swing.JButton btn_Ejemplares;
+    private javax.swing.JButton btn_Empleados;
     private javax.swing.JButton btn_Libros;
+    private javax.swing.JButton btn_Prestamos;
     private javax.swing.JButton btn_Rol;
     private javax.swing.JButton btn_TipoUsuario;
+    private javax.swing.JButton btn_Usuarios;
     private javax.swing.JLabel jLabelBiblioteca;
+    private javax.swing.JLabel jbl_Bibliteca;
     // End of variables declaration//GEN-END:variables
 }

@@ -87,6 +87,7 @@ public class FormularioPrestamos extends javax.swing.JDialog {
         txt_EmpleadoID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Prestamos");
 
         jLabelPrestamoID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelPrestamoID.setText("PrestamoID");
@@ -108,7 +109,9 @@ public class FormularioPrestamos extends javax.swing.JDialog {
 
         txt_PrestamoID.setEnabled(false);
 
+        btn_Accion.setBackground(new java.awt.Color(0, 153, 102));
         btn_Accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Accion.setForeground(new java.awt.Color(204, 255, 255));
         btn_Accion.setText("Guardar");
         btn_Accion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +119,7 @@ public class FormularioPrestamos extends javax.swing.JDialog {
             }
         });
 
+        btn_Salir.setBackground(new java.awt.Color(255, 51, 0));
         btn_Salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -129,44 +133,37 @@ public class FormularioPrestamos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelPrestamoID)
+                        .addComponent(jLabelUsuarioID, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelEjemplarID, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabelFechaEgreso)
+                    .addComponent(jLabelFechaDevolucionEstimada)
+                    .addComponent(jlbEmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Accion))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Accion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Salir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelPrestamoID)
-                                .addComponent(jLabelUsuarioID, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelEjemplarID, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabelFechaEgreso)
-                            .addComponent(jLabelFechaDevolucionEstimada)
-                            .addComponent(jlbEmpleadoID))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(txt_PrestamoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(68, 68, 68))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txt_FechaDevolucionEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_FechaEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(8, 8, 8))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_UsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(46, 46, 46))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_PrestamoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txt_FechaDevolucionEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_FechaEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_UsuarioID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(txt_EjemplarID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                                .addGap(40, 40, 40))
+                            .addComponent(btn_Salir, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,11 +195,11 @@ public class FormularioPrestamos extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbEmpleadoID)
                     .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Accion)
-                    .addComponent(btn_Salir))
-                .addGap(48, 48, 48))
+                    .addComponent(btn_Salir)
+                    .addComponent(btn_Accion))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();

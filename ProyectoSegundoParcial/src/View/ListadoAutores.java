@@ -64,6 +64,7 @@ public class ListadoAutores extends javax.swing.JFrame {
         txt_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Autores");
 
         tbl_Autores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +79,7 @@ public class ListadoAutores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Autores);
 
+        btn_Insertar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Insertar.setText("Insertar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +87,7 @@ public class ListadoAutores extends javax.swing.JFrame {
             }
         });
 
+        btn_Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Actualizar.setText("Actualizar");
         btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +95,7 @@ public class ListadoAutores extends javax.swing.JFrame {
             }
         });
 
+        txt_delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_delete.setText("Eliminar");
         txt_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,12 +109,12 @@ public class ListadoAutores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_Insertar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(100, 100, 100)
                         .addComponent(btn_Actualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_delete))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -125,7 +129,7 @@ public class ListadoAutores extends javax.swing.JFrame {
                     .addComponent(btn_Insertar)
                     .addComponent(btn_Actualizar)
                     .addComponent(txt_delete))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();

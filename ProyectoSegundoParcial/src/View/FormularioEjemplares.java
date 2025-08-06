@@ -79,6 +79,7 @@ public class FormularioEjemplares extends javax.swing.JDialog {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ejemplares");
 
         jLabelEjemplarID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelEjemplarID.setText("EjemplarID");
@@ -94,6 +95,7 @@ public class FormularioEjemplares extends javax.swing.JDialog {
 
         txt_EjemplarID.setEnabled(false);
 
+        btn_Accion.setBackground(new java.awt.Color(0, 204, 204));
         btn_Accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Accion.setText("Guardar");
         btn_Accion.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +104,7 @@ public class FormularioEjemplares extends javax.swing.JDialog {
             }
         });
 
+        btn_Salir.setBackground(new java.awt.Color(255, 0, 51));
         btn_Salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -115,26 +118,22 @@ public class FormularioEjemplares extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEjemplarID)
-                            .addComponent(jLabelLibroID)
-                            .addComponent(jLabelFechaIngreso)
-                            .addComponent(jLabelEstado))
-                        .addGap(122, 122, 122)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_FechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                            .addComponent(txt_LibroID)
-                            .addComponent(txt_EjemplarID)
-                            .addComponent(txt_Estado)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(btn_Accion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Salir)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelLibroID)
+                    .addComponent(jLabelFechaIngreso)
+                    .addComponent(jLabelEstado)
+                    .addComponent(jLabelEjemplarID, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Accion))
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txt_FechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(txt_LibroID)
+                        .addComponent(txt_EjemplarID)
+                        .addComponent(txt_Estado))
+                    .addComponent(btn_Salir))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,11 +154,11 @@ public class FormularioEjemplares extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstado)
                     .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Accion)
-                    .addComponent(btn_Salir))
-                .addGap(56, 56, 56))
+                    .addComponent(btn_Salir)
+                    .addComponent(btn_Accion))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();

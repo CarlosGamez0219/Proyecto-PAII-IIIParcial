@@ -88,6 +88,7 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Devoluciones");
 
         jLabelDevolucionID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelDevolucionID.setText("DevolucionID");
@@ -109,9 +110,8 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
 
         txt_DevolucionID.setEnabled(false);
 
-        btn_Accion.setBackground(new java.awt.Color(0, 204, 0));
+        btn_Accion.setBackground(new java.awt.Color(0, 153, 204));
         btn_Accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_Accion.setForeground(new java.awt.Color(255, 255, 255));
         btn_Accion.setText("Guardar");
         btn_Accion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +121,7 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
 
         btn_Salir.setBackground(new java.awt.Color(204, 204, 204));
         btn_Salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_Salir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Salir.setForeground(new java.awt.Color(51, 51, 51));
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,23 +137,28 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDevolucionID)
-                    .addComponent(jLabelEjemplarID)
-                    .addComponent(jLabelPrestamoID)
                     .addComponent(jLabelFechaDevolucion)
                     .addComponent(jLabelComentario)
                     .addComponent(jLabelEmpleadoID)
-                    .addComponent(btn_Accion))
-                .addGap(124, 124, 124)
+                    .addComponent(btn_Accion, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabelEjemplarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelPrestamoID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Salir)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_PrestamoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_EjemplarID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_DevolucionID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_FechaDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                        .addComponent(txt_Comentario)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_PrestamoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_EjemplarID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_DevolucionID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_FechaDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(txt_Comentario))
+                        .addContainerGap(58, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

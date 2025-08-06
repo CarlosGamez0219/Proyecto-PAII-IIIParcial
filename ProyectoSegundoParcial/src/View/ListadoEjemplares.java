@@ -64,6 +64,8 @@ public class ListadoEjemplares extends javax.swing.JFrame {
         btn_delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ejemplares");
+        setFont(new java.awt.Font("Agency FB", 0, 10)); // NOI18N
 
         tbl_Ejemplares.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +80,7 @@ public class ListadoEjemplares extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_Ejemplares);
 
+        btn_Insertar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Insertar.setText("Insertar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +88,7 @@ public class ListadoEjemplares extends javax.swing.JFrame {
             }
         });
 
+        btn_Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Actualizar.setText("Actualizar");
         btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +96,7 @@ public class ListadoEjemplares extends javax.swing.JFrame {
             }
         });
 
+        btn_delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_delete.setText("Eliminar");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +131,7 @@ public class ListadoEjemplares extends javax.swing.JFrame {
                         .addComponent(btn_Actualizar)
                         .addComponent(btn_delete))
                     .addComponent(btn_Insertar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();

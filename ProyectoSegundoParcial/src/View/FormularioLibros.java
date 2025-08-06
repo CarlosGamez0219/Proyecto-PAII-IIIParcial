@@ -79,6 +79,7 @@ public class FormularioLibros extends javax.swing.JDialog {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Libros");
 
         txt_LibrosID.setEnabled(false);
         txt_LibrosID.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +103,9 @@ public class FormularioLibros extends javax.swing.JDialog {
         jLabelEdicion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelEdicion.setText("Edición");
 
+        btn_Accion.setBackground(new java.awt.Color(0, 153, 153));
         btn_Accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Accion.setForeground(new java.awt.Color(204, 204, 204));
         btn_Accion.setText("Guardar");
         btn_Accion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +113,7 @@ public class FormularioLibros extends javax.swing.JDialog {
             }
         });
 
+        btn_Salir.setBackground(new java.awt.Color(255, 51, 51));
         btn_Salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -127,13 +131,9 @@ public class FormularioLibros extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelEdicion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelLibrosID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(26, 26, 26)
+                            .addComponent(jLabelEdicion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelLibrosID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Edicion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_LibrosID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,7 +186,7 @@ public class FormularioLibros extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Accion)
                     .addComponent(btn_Salir))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();

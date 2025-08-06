@@ -76,17 +76,24 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         btn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Empleados");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre del Empleado");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("EmpleadoID");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Rol");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Status");
 
         txt_EmpleadoID.setEnabled(false);
 
+        btn_accion.setBackground(new java.awt.Color(0, 153, 153));
+        btn_accion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_accion.setText("Guardar");
         btn_accion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +101,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             }
         });
 
+        btn_salir.setBackground(new java.awt.Color(255, 51, 51));
+        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_salir.setText("Salir");
         btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +130,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                     .addComponent(txt_Status, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +155,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_accion)
                     .addComponent(btn_salir))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
