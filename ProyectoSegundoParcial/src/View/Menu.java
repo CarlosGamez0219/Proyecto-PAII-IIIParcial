@@ -236,7 +236,6 @@ public class Menu extends javax.swing.JDialog {
     private void btn_RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RolActionPerformed
         // TODO add your handling code here:
         new ListaRol().setVisible(true);
-        
         this.dispose();
     }//GEN-LAST:event_btn_RolActionPerformed
 
