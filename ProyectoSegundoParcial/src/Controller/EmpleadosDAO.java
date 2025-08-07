@@ -55,7 +55,7 @@ public class EmpleadosDAO {
     }
     public boolean update(Object object){
         Empleados empleados = (Empleados) object;
-        String sql = "UPDATE Empleados SET EmpleadoID = ?, NombreEmpleado = ?, Contraseña = ?, RolID = ?, Status = ? WHERE EmpleadoID = ?";
+        String sql = "UPDATE Empleados SET NombreEmpleado = ?, Contraseña = ?, RolID = ?, Status = ? WHERE EmpleadoID = ?";
         try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, empleados.getNombreEmpleado());

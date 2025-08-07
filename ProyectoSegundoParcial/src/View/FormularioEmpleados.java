@@ -19,6 +19,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     private int EmpleadoID;
     private EmpleadosDAO dao;
     private ListadoEmpleados parent;
+    private String contraseñaOriginal;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioEmpleados.class.getName());
 
@@ -40,7 +41,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }else if(mode.equals("UPD")){
             Empleados empleados = (Empleados) dao.getByEmpleadoID(EmpleadoID);
             txt_NombreEmpleado.setText(empleados.getNombreEmpleado());
-            txt_Contraseña.setText(empleados.getContraseña());
+            txt_Contraseña.setText("");
+            contraseñaOriginal = empleados.getContraseña();
             txt_RolID.setText(String.valueOf(empleados.getRolID()));
             txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
 
@@ -219,7 +221,12 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
             empleados.setEmpleadoID(EmpleadoID);
             String contraseñaPlano = txt_Contraseña.getText();
-            String contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+            String contraseñaHash;
+            if (contraseñaPlano == null || contraseñaPlano.isEmpty()) {
+            contraseñaHash = contraseñaOriginal; // No se cambió
+            } else {
+            contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+        }
             empleados.setContraseña(contraseñaHash);
             
             try {
