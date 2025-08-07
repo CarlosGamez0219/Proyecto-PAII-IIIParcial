@@ -38,7 +38,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
         List<Object>Empleados = empleadosDAO.getAll();
         for(Object Empleados_uncast : Empleados){
             Empleados empleados = (Empleados) Empleados_uncast;
-            modeloTabla.addRow(new Object[]{empleados.getEmpleadoID(), empleados.getNombreEmpleado(), empleados.getRolDescripcion(), empleados.getStatus()});
+            modeloTabla.addRow(new Object[]{empleados.getEmpleadoID(), empleados.getNombreEmpleado(), empleados.getContraseña(), empleados.getRolID(), empleados.getStatus()});
         }
     }
     
@@ -68,13 +68,13 @@ public class ListadoEmpleados extends javax.swing.JFrame {
 
         tbl_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "EmpleadoID", "NombreEmpleado", "RolDescripcion", "Status"
+                "EmpleadoID", "NombreEmpleado", "Contraseña", "RolID", "Status"
             }
         ));
         jScrollPane1.setViewportView(tbl_Empleados);

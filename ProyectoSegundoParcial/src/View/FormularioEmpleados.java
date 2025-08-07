@@ -7,6 +7,7 @@ package View;
 
 import Controller.EmpleadosDAO;
 import Model.Empleados;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }else if(mode.equals("UPD")){
             Empleados empleados = (Empleados) dao.getByEmpleadoID(EmpleadoID);
             txt_NombreEmpleado.setText(empleados.getNombreEmpleado());
-            txt_Rol.setText(empleados.getRolDescripcion());
+            txt_Contraseña.setText(empleados.getContraseña());
+            txt_RolID.setText(String.valueOf(empleados.getRolID()));
             txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
 
 
@@ -48,9 +50,13 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }else if(mode.equals("DLT")){
             Empleados empleados = (Empleados) dao.getByEmpleadoID(EmpleadoID);
             txt_NombreEmpleado.setText(empleados.getNombreEmpleado());
-            txt_Rol.setEnabled(false);
-            txt_Rol.setText(empleados.getRolDescripcion());
-            txt_Rol.setEnabled(false);
+            txt_NombreEmpleado.setEnabled(false);
+            txt_Contraseña.setText(empleados.getContraseña());
+            txt_Contraseña.setEnabled(false);
+            txt_RolID.setText(String.valueOf(empleados.getRolID()));
+            txt_RolID.setEnabled(false);
+            txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            txt_Status.setEnabled(false);
             btn_accion.setText("Eliminar");
         }
     }
@@ -69,11 +75,13 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_NombreEmpleado = new javax.swing.JTextField();
-        txt_Rol = new javax.swing.JTextField();
+        txt_RolID = new javax.swing.JTextField();
         txt_Status = new javax.swing.JTextField();
         txt_EmpleadoID = new javax.swing.JTextField();
         btn_accion = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
+        jLabel_Contraseña = new javax.swing.JLabel();
+        txt_Contraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Empleados");
@@ -85,7 +93,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel2.setText("EmpleadoID");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Rol");
+        jLabel3.setText("RolID");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Status");
@@ -110,6 +118,9 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             }
         });
 
+        jLabel_Contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_Contraseña.setText("Contraseña");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,17 +130,19 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel_Contraseña)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_accion))
                 .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_salir)
-                    .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Status, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(txt_Status, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(txt_RolID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(txt_Contraseña)
+                    .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,18 +157,25 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                     .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_Contraseña)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txt_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_RolID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_accion)
                     .addComponent(btn_salir))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -166,7 +186,22 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     if(mode.equals("INS")){
             Empleados empleados = new Empleados();
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
-            empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
+            empleados.setContraseña(txt_Contraseña.getText());
+            
+            try {
+            empleados.setRolID(Integer.parseInt(txt_RolID.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID de Rol debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
+        try {
+            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
             dao.insert(empleados);
             
             parent.refrescarInfo();
@@ -178,6 +213,21 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             Empleados empleados = new Empleados();
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
             empleados.setEmpleadoID(EmpleadoID);
+              empleados.setContraseña(txt_Contraseña.getText());
+            
+            try {
+            empleados.setRolID(Integer.parseInt(txt_RolID.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID de Rol debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
+        try {
+            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
             dao.update(empleados);
             
             parent.refrescarInfo();
@@ -245,9 +295,11 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel_Contraseña;
+    private javax.swing.JTextField txt_Contraseña;
     private javax.swing.JTextField txt_EmpleadoID;
     private javax.swing.JTextField txt_NombreEmpleado;
-    private javax.swing.JTextField txt_Rol;
+    private javax.swing.JTextField txt_RolID;
     private javax.swing.JTextField txt_Status;
     // End of variables declaration//GEN-END:variables
 }

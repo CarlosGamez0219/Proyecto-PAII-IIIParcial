@@ -15,15 +15,19 @@ public class Empleados {
     //Declaracion de las variables de la clase.
     private int EmpleadoID;
     private String NombreEmpleado;
+    private String Contraseña;
+    private int RolID;
     private String RolDescripcion;
-    private byte Status;
+    private int Status;
 
-    public Empleados(int EmpleadoID, String NombreEmpleado, String RolDescripcion, byte Status) {
+    public Empleados(int EmpleadoID, String NombreEmpleado, String Contraseña, int RolID, int Status) {
         this.EmpleadoID = EmpleadoID;
         this.NombreEmpleado = NombreEmpleado;
-        this.RolDescripcion = RolDescripcion;
+        this.Contraseña = Contraseña;
+        this.RolID = RolID;
         this.Status = Status;
     }
+
     
     public Empleados() {
         
@@ -45,6 +49,22 @@ public class Empleados {
         this.NombreEmpleado = NombreEmpleado;
     }
 
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
+    }
+
+    public int getRolID() {
+        return RolID;
+    }
+
+    public void setRolID(int RolID) {
+        this.RolID = RolID;
+    }
+
     public String getRolDescripcion() {
         return RolDescripcion;
     }
@@ -53,27 +73,26 @@ public class Empleados {
         this.RolDescripcion = RolDescripcion;
     }
 
-    public byte getStatus() {
+    
+    
+    public int getStatus() {
         return Status;
     }
 
-    public void setStatus(byte Status) {
+    public void setStatus(int Status) {
         this.Status = Status;
     }
 
-    
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + this.EmpleadoID;
-        hash = 31 * hash + Objects.hashCode(this.NombreEmpleado);
-        hash = 31 * hash + Objects.hashCode(this.RolDescripcion);
-        hash = 31 * hash + this.Status;
+        int hash = 3;
+        hash = 59 * hash + this.EmpleadoID;
+        hash = 59 * hash + Objects.hashCode(this.NombreEmpleado);
+        hash = 59 * hash + Objects.hashCode(this.Contraseña);
+        hash = 59 * hash + this.RolID;
+        hash = 59 * hash + this.Status;
         return hash;
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -90,17 +109,17 @@ public class Empleados {
         if (this.EmpleadoID != other.EmpleadoID) {
             return false;
         }
+        if (this.RolID != other.RolID) {
+            return false;
+        }
         if (this.Status != other.Status) {
             return false;
         }
         if (!Objects.equals(this.NombreEmpleado, other.NombreEmpleado)) {
             return false;
         }
-       /* if (!Objects.equals(this.Contraseña, other.Contraseña)) {
-            return false;
-        }*/
-        return Objects.equals(this.RolDescripcion, other.RolDescripcion);
+        return Objects.equals(this.Contraseña, other.Contraseña);
     }
 
-     
-}
+    
+    }

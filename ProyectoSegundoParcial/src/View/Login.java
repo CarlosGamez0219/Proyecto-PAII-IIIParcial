@@ -5,6 +5,7 @@
 package View;
 
 import Controller.EmpleadosDAO;
+import Model.Empleados;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -171,22 +172,22 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_IniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_IniciarSesionMouseClicked
         // TODO add your handling code here:
-        String nombreUsuario = Text_Usuario.getText();
-        String contraseñaIngresada = new String(Password_Contraseña.getPassword());
+        String Usuario = Text_Usuario.getText().trim();
+        String Contraseña = new String(Password_Contraseña.getPassword());
 
         EmpleadosDAO dao = new EmpleadosDAO();
-        boolean loginCorrecto = dao.validarCredenciales(nombreUsuario, contraseñaIngresada);
+        Empleados empleado = dao.validarCredenciales(Usuario, Contraseña);
 
-        if (loginCorrecto) {
-        JOptionPane.showMessageDialog(this, "¡Bienvenido " + nombreUsuario + "!");
+        if (empleado != null) {
+        JOptionPane.showMessageDialog(this, "✅ Bienvenido " + empleado.getNombreEmpleado());
+
         
-        // Aquí podrías abrir tu ventana principal
-    } else {
-        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de Login", JOptionPane.ERROR_MESSAGE);
-    }
-        
-        new Menu().setVisible(true);
+        Menu menu = new Menu(null, true, empleado); 
+        menu.setVisible(true);
         this.dispose();
+        } else {
+        JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_IniciarSesionMouseClicked
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed

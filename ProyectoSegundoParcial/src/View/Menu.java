@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
+import Model.Empleados;
 import View.ListadoAutores;
 import View.ListadoLibros;
 import View.ListaRol;
 import View.ListadoCategorias;
+import View.ListadoPrestamos;
+import View.ListadoUsuarios;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 /**
@@ -20,10 +23,25 @@ public class Menu extends javax.swing.JDialog {
     /**
      * Creates new form Menu
      */
-    public Menu(java.awt.Frame parent, boolean modal) {
+    private Empleados empleadoActual;
+    
+    public Menu(java.awt.Frame parent, boolean modal, Empleados empleado) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
+
+        this.empleadoActual = empleado;
+
+        jLabelBiblioteca.setText("Bienvenido, " + empleado.getNombreEmpleado()
+                             + " (" + empleado.getRolDescripcion() + ")");
+
+        // Control de permisos por rol
+        if (empleado.getRolID() != 1) {
+        btn_Empleados.setEnabled(false);
+        btn_Rol.setEnabled(false);
+        btn_TipoUsuario.setEnabled(false);
+        }
         
         ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/imagenes/Biblioteca.png"));
         Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
@@ -31,11 +49,7 @@ public class Menu extends javax.swing.JDialog {
         
         System.out.println(getClass().getResource("/imagenes/Biblioteca.png"));
     }
-
-    Menu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -278,39 +292,6 @@ public class Menu extends javax.swing.JDialog {
     /**this.setVisible(false);
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Menu dialog = new Menu(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Autores;

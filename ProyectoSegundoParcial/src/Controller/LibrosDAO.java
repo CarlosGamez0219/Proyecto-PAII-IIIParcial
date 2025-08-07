@@ -89,7 +89,6 @@ public class LibrosDAO {
         try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, LibrosID);
-            
             ResultSet resultado = pst.executeQuery();
             while(resultado.next()){
                 libros.setLibrosID(resultado.getInt("LibrosID"));
