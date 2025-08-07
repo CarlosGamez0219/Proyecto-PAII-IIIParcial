@@ -186,7 +186,12 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     if(mode.equals("INS")){
             Empleados empleados = new Empleados();
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
-            empleados.setContraseña(txt_Contraseña.getText());
+            
+            //Conversion de contraseña de texto plano a hash.
+            String contraseñaPlano = txt_Contraseña.getText();
+            String contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+            empleados.setContraseña(contraseñaHash);
+
             
             try {
             empleados.setRolID(Integer.parseInt(txt_RolID.getText()));
@@ -213,7 +218,9 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             Empleados empleados = new Empleados();
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
             empleados.setEmpleadoID(EmpleadoID);
-              empleados.setContraseña(txt_Contraseña.getText());
+            String contraseñaPlano = txt_Contraseña.getText();
+            String contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+            empleados.setContraseña(contraseñaHash);
             
             try {
             empleados.setRolID(Integer.parseInt(txt_RolID.getText()));

@@ -39,7 +39,7 @@ public class EmpleadosDAO {
     
     public boolean insert(Object object){
         Empleados empleados = (Empleados) object;
-        String sql = "INSERT INTO Empleados (NombreEmpleado, Contraseña, RolID, Status) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO Empleados (NombreEmpleado, Contraseña, RolID, Status) VALUES (?, ?, ?, ?);";
         try(Connection con = ConnectionBD.getConnection()){
              PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, empleados.getNombreEmpleado());
