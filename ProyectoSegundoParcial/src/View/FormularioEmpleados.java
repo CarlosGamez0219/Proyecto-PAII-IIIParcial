@@ -31,6 +31,10 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         this.parent = pParent;
         initComponents();
         setLocationRelativeTo(null);
+        combo_Status.removeAllItems();
+        combo_Status.addItem("Activo");
+        combo_Status.addItem("Inactivo");
+
         
         dao = new EmpleadosDAO();
         this.mode = pMode;
@@ -44,7 +48,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             txt_Contraseña.setText("");
             contraseñaOriginal = empleados.getContraseña();
             txt_RolID.setText(String.valueOf(empleados.getRolID()));
-            txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            combo_Status.setSelectedItem(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            
 
 
             btn_accion.setText("Actualizar");
@@ -57,8 +62,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             txt_Contraseña.setEnabled(false);
             txt_RolID.setText(String.valueOf(empleados.getRolID()));
             txt_RolID.setEnabled(false);
-            txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
-            txt_Status.setEnabled(false);
+            combo_Status.setSelectedItem(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            combo_Status.setEnabled(false);
             btn_accion.setText("Eliminar");
         }
     }
@@ -78,12 +83,12 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txt_NombreEmpleado = new javax.swing.JTextField();
         txt_RolID = new javax.swing.JTextField();
-        txt_Status = new javax.swing.JTextField();
         txt_EmpleadoID = new javax.swing.JTextField();
         btn_accion = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
         jLabel_Contraseña = new javax.swing.JLabel();
         txt_Contraseña = new javax.swing.JTextField();
+        combo_Status = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Empleados");
@@ -123,6 +128,13 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel_Contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel_Contraseña.setText("Contraseña");
 
+        combo_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_StatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,11 +152,11 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(txt_Status, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(txt_RolID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(txt_Contraseña)
-                    .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(combo_Status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,7 +184,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_accion)
@@ -203,7 +215,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }
             
         try {
-            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+            String statusSeleccionado = (String) combo_Status.getSelectedItem();
+            empleados.setStatus(statusSeleccionado.equals("Activo") ? 1 : 0);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -237,7 +250,9 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }
             
         try {
-            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+            String statusSeleccionado = (String) combo_Status.getSelectedItem();
+            empleados.setStatus(statusSeleccionado.equals("Activo") ? 1 : 0);
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -264,6 +279,10 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         
         this.dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void combo_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_StatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_StatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,6 +324,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_accion;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JComboBox<String> combo_Status;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -314,6 +334,5 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     private javax.swing.JTextField txt_EmpleadoID;
     private javax.swing.JTextField txt_NombreEmpleado;
     private javax.swing.JTextField txt_RolID;
-    private javax.swing.JTextField txt_Status;
     // End of variables declaration//GEN-END:variables
 }
