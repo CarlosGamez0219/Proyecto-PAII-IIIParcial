@@ -49,7 +49,7 @@ public class ListadoEmpleados extends javax.swing.JFrame {
         List<Object>Empleados = empleadosDAO.getAll();
         for(Object Empleados_uncast : Empleados){
             Empleados empleados = (Empleados) Empleados_uncast;
-            modeloTabla.addRow(new Object[]{empleados.getEmpleadoID(), empleados.getNombreEmpleado(), empleados.getContraseña(), empleados.getRolID(), empleados.getStatus()});
+            modeloTabla.addRow(new Object[]{empleados.getEmpleadoID(), empleados.getNombreEmpleado(), empleados.getContraseña(), (empleados.getRolID() == 1) ? "Administrador" : (empleados.getRolID() == 2) ? "Bibliotecario" :(empleados.getRolID() == 3) ? "IT" : "Desconocido"  , empleados.getStatus() == 1? "Activo" : "Inactivo"});
         }
     }
     

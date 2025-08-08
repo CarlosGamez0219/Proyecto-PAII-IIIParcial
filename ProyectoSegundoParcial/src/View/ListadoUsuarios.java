@@ -47,7 +47,7 @@ public class ListadoUsuarios extends javax.swing.JFrame {
         List<Object>Usuarios = usuariosDAO.getAll();
         for(Object Usuarios_uncast : Usuarios){
             Usuarios usuarios = (Usuarios) Usuarios_uncast;
-            modeloTabla.addRow(new Object[]{usuarios.getUsuarioID(), usuarios.getCorreo(), usuarios.getTelefono(), usuarios.getDireccion(), usuarios.getNombre(), usuarios.getApellido(), usuarios.getTipoUsuarioID(), usuarios.getStatus(), usuarios.getContraseña()});
+            modeloTabla.addRow(new Object[]{usuarios.getUsuarioID(), usuarios.getCorreo(), usuarios.getTelefono(), usuarios.getDireccion(), usuarios.getNombre(), usuarios.getApellido(), (usuarios.getTipoUsuarioID() == 1) ? "Estudiante" : (usuarios.getTipoUsuarioID() == 2) ? "Profesor" :(usuarios.getTipoUsuarioID() == 1) ? "Estudiante" : "Desconocido", usuarios.getStatus() == 1? "Activo" : "Inactivo", usuarios.getContraseña()});
         }
     }
     
@@ -76,13 +76,13 @@ public class ListadoUsuarios extends javax.swing.JFrame {
 
         tbl_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "UsuarioID", "Correo ", "Telefono", "Direccion", "Nombre", "Apellido", "Status"
+                "UsuarioID", "Correo ", "Telefono", "Direccion", "Nombre", "Apellido", "TipoUsuarioID", "Status"
             }
         ));
         jScrollPane1.setViewportView(tbl_Usuarios);
@@ -117,22 +117,20 @@ public class ListadoUsuarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Insertar)
-                        .addGap(185, 185, 185)
-                        .addComponent(btn_Actualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_delete)))
+                .addComponent(btn_Insertar)
+                .addGap(185, 185, 185)
+                .addComponent(btn_Actualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(btn_delete)
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Insertar)
                     .addComponent(btn_Actualizar)

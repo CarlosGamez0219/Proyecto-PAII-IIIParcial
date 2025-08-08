@@ -19,6 +19,7 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     private int EmpleadoID;
     private EmpleadosDAO dao;
     private ListadoEmpleados parent;
+    private String contraseñaOriginal;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioEmpleados.class.getName());
 
@@ -30,6 +31,15 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         this.parent = pParent;
         initComponents();
         setLocationRelativeTo(null);
+        combo_Status.removeAllItems();
+        combo_Status.addItem("Activo");
+        combo_Status.addItem("Inactivo");
+        
+        combo_Rol.removeAllItems();
+        combo_Rol.addItem("Administrador");
+        combo_Rol.addItem("Bibliotecario");
+        combo_Rol.addItem("IT");
+
         
         dao = new EmpleadosDAO();
         this.mode = pMode;
@@ -40,9 +50,11 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         }else if(mode.equals("UPD")){
             Empleados empleados = (Empleados) dao.getByEmpleadoID(EmpleadoID);
             txt_NombreEmpleado.setText(empleados.getNombreEmpleado());
-            txt_Contraseña.setText(empleados.getContraseña());
-            txt_RolID.setText(String.valueOf(empleados.getRolID()));
-            txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            txt_Contraseña.setText("");
+            contraseñaOriginal = empleados.getContraseña();
+            combo_Rol.setSelectedItem(empleados.getRolID() == 1 ? "Administrador" : empleados.getRolID() == 2 ? "Bibliotecario" : empleados.getRolID() == 3 ? "IT" : "Desconocido");
+            combo_Status.setSelectedItem(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            
 
 
             btn_accion.setText("Actualizar");
@@ -53,10 +65,10 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             txt_NombreEmpleado.setEnabled(false);
             txt_Contraseña.setText(empleados.getContraseña());
             txt_Contraseña.setEnabled(false);
-            txt_RolID.setText(String.valueOf(empleados.getRolID()));
-            txt_RolID.setEnabled(false);
-            txt_Status.setText(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
-            txt_Status.setEnabled(false);
+            combo_Rol.setSelectedItem(empleados.getRolID() == 1 ? "Administrador" : empleados.getRolID() == 2 ? "Bibliotecario" : empleados.getRolID() == 3 ? "IT" : "Desconocido");
+            combo_Rol.setEnabled(false);
+            combo_Status.setSelectedItem(empleados.getStatus() == 1 ? "Activo" : "Inactivo");
+            combo_Status.setEnabled(false);
             btn_accion.setText("Eliminar");
         }
     }
@@ -75,13 +87,13 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_NombreEmpleado = new javax.swing.JTextField();
-        txt_RolID = new javax.swing.JTextField();
-        txt_Status = new javax.swing.JTextField();
         txt_EmpleadoID = new javax.swing.JTextField();
         btn_accion = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
         jLabel_Contraseña = new javax.swing.JLabel();
         txt_Contraseña = new javax.swing.JTextField();
+        combo_Status = new javax.swing.JComboBox<>();
+        combo_Rol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Empleados");
@@ -121,6 +133,20 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         jLabel_Contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel_Contraseña.setText("Contraseña");
 
+        combo_Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_StatusActionPerformed(evt);
+            }
+        });
+
+        combo_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_Rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_RolActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,11 +164,11 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_EmpleadoID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(txt_Status, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(txt_RolID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                     .addComponent(txt_Contraseña)
-                    .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(combo_Status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combo_Rol, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,13 +190,13 @@ public class FormularioEmpleados extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txt_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_RolID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(combo_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_accion)
@@ -186,17 +212,32 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     if(mode.equals("INS")){
             Empleados empleados = new Empleados();
             empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
-            empleados.setContraseña(txt_Contraseña.getText());
             
-            try {
-            empleados.setRolID(Integer.parseInt(txt_RolID.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El ID de Rol debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            //Conversion de contraseña de texto plano a hash.
+            String contraseñaPlano = txt_Contraseña.getText();
+            String contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+            empleados.setContraseña(contraseñaHash);
+
+           try {
+            String rolSeleccionado = (String) combo_Rol.getSelectedItem();
+            empleados.setRolID(
+                rolSeleccionado.equals("Administrador") ? 1 :
+                rolSeleccionado.equals("Bibliotecario") ? 2 :
+                rolSeleccionado.equals("IT") ? 3 : 0
+            );
+
+            if (empleados.getRolID() == 0) {
+                JOptionPane.showMessageDialog(this, "Seleccione un rol válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al asignar el Rol.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
             
         try {
-            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+            String statusSeleccionado = (String) combo_Status.getSelectedItem();
+            empleados.setStatus(statusSeleccionado.equals("Activo") ? 1 : 0);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -209,21 +250,42 @@ public class FormularioEmpleados extends javax.swing.JDialog {
             this.dispose();
         }
         
-        if(mode.equals("UPD")){
-            Empleados empleados = new Empleados();
-            empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
-            empleados.setEmpleadoID(EmpleadoID);
-              empleados.setContraseña(txt_Contraseña.getText());
-            
-            try {
-            empleados.setRolID(Integer.parseInt(txt_RolID.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El ID de Rol debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+if(mode.equals("UPD")){
+    Empleados empleados = new Empleados();
+    empleados.setNombreEmpleado(txt_NombreEmpleado.getText());
+    empleados.setEmpleadoID(EmpleadoID);
+
+    String contraseñaPlano = txt_Contraseña.getText();
+    String contraseñaHash;
+    if (contraseñaPlano == null || contraseñaPlano.isEmpty()) {
+        contraseñaHash = contraseñaOriginal; // No se cambió
+    } else {
+        contraseñaHash = org.mindrot.jbcrypt.BCrypt.hashpw(contraseñaPlano, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+    }
+    empleados.setContraseña(contraseñaHash);
+
+    try {
+        String rolSeleccionado = (String) combo_Rol.getSelectedItem();
+        empleados.setRolID(
+            rolSeleccionado.equals("Administrador") ? 1 :
+            rolSeleccionado.equals("Bibliotecario") ? 2 :
+            rolSeleccionado.equals("IT") ? 3 : 0
+        );
+
+        if (empleados.getRolID() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un rol válido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al asignar el Rol.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
             
         try {
-            empleados.setStatus(Integer.parseInt(txt_Status.getText()));
+            String statusSeleccionado = (String) combo_Status.getSelectedItem();
+            empleados.setStatus(statusSeleccionado.equals("Activo") ? 1 : 0);
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El Status debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -250,6 +312,14 @@ public class FormularioEmpleados extends javax.swing.JDialog {
         
         this.dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void combo_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_StatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_StatusActionPerformed
+
+    private void combo_RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_RolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_RolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +361,8 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_accion;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JComboBox<String> combo_Rol;
+    private javax.swing.JComboBox<String> combo_Status;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -299,7 +371,5 @@ public class FormularioEmpleados extends javax.swing.JDialog {
     private javax.swing.JTextField txt_Contraseña;
     private javax.swing.JTextField txt_EmpleadoID;
     private javax.swing.JTextField txt_NombreEmpleado;
-    private javax.swing.JTextField txt_RolID;
-    private javax.swing.JTextField txt_Status;
     // End of variables declaration//GEN-END:variables
 }

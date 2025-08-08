@@ -27,6 +27,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
@@ -78,11 +79,42 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+=======
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="97" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelBiblioteca" min="-2" pref="137" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jbl_Bibliteca" min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace pref="115" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btn_Autores" max="32767" attributes="0"/>
+                          <Component id="btn_Libros" max="32767" attributes="0"/>
+                          <Component id="btn_TipoUsuario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Ejemplares" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Prestamos" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btn_Rol" max="32767" attributes="0"/>
+                          <Component id="btn_Categoria" max="32767" attributes="0"/>
+                          <Component id="btn_Devoluiones" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Empleados" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Usuarios" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+>>>>>>> 684fc26dc38ee0e7233bd6f8133e8bdc99e5d792
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" attributes="0">
               <Component id="jlb_Empleado" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -132,6 +164,13 @@
                       <Component id="btn_ReportePrestamos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
+=======
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jbl_Bibliteca" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jLabelBiblioteca" min="-2" max="-2" attributes="0"/>
+>>>>>>> 684fc26dc38ee0e7233bd6f8133e8bdc99e5d792
               </Group>
           </Group>
       </Group>
