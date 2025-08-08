@@ -69,7 +69,7 @@ public class DevolucionesDAO {
              return pst.executeUpdate()>0;
         
         }catch(SQLException ex){
-            System.err.println("Error al actualizar DEvoluciones: " + ex.getMessage());
+            System.err.println("Error al actualizar Devoluciones: " + ex.getMessage());
             return false;
         }
     }
@@ -110,4 +110,60 @@ public class DevolucionesDAO {
         
         return devoluciones;
     }
+    
+    public boolean procesarDevolucion(Devoluciones devolucion) {
+    String sqlDevolucion = "INSERT INTO Devoluciones (DevolucionID, EjemplarID, PrestamoID, FechaDevolucion, Comentario, EmpleadoID) VALUES (?, ?, ?, ?, ?, ?);";
+    String sqlActualizarEjemplar = "UPDATE Ejemplares SET Estado = '0' WHERE EjemplarID = ?";
+    String sqlActualizarPrestamo = "UPDATE Prestamos SET FechaDevolucionReal = ? WHERE PrestamoID = ?";
+
+    Connection con = null; // 👈 Declarar fuera del try
+
+    try {
+        con = ConnectionBD.getConnection();
+        con.setAutoCommit(false); // Iniciar transacción
+
+        try (
+            PreparedStatement pstDevolucion = con.prepareStatement(sqlDevolucion);
+            PreparedStatement pstEjemplar = con.prepareStatement(sqlActualizarEjemplar);
+            PreparedStatement pstPrestamo = con.prepareStatement(sqlActualizarPrestamo);
+        ) {
+            // Insertar en Devoluciones
+            pstDevolucion.setInt(1, devolucion.getEjemplarID());
+            pstDevolucion.setInt(2, devolucion.getPrestamoID());
+            pstDevolucion.setDate(3, new java.sql.Date(devolucion.getFechaDevolucion().getTime()));
+            pstDevolucion.setString(4, devolucion.getComentario());
+            pstDevolucion.setInt(5, devolucion.getEmpleadoID());
+            pstDevolucion.executeUpdate();
+
+            // Cambiar estado del ejemplar
+            pstEjemplar.setInt(1, devolucion.getEjemplarID());
+            pstEjemplar.executeUpdate();
+
+            // Actualizar préstamo
+            pstPrestamo.setDate(1, new java.sql.Date(devolucion.getFechaDevolucion().getTime()));
+            pstPrestamo.setInt(2, devolucion.getPrestamoID());
+            pstPrestamo.executeUpdate();
+
+            con.commit(); // Confirmar transacción
+            return true;
+
+        } catch (SQLException ex) {
+            if (con != null) {
+                try {
+                    con.rollback(); // 👈 Ahora esto sí funciona
+                } catch (SQLException rollbackEx) {
+                    System.err.println("Error al hacer rollback: " + rollbackEx.getMessage());
+                }
+            }
+            System.err.println("Error en transacción de devolución: " + ex.getMessage());
+            return false;
+        }
+
+    } catch (SQLException ex) {
+        System.err.println("Error al conectar: " + ex.getMessage());
+        return false;
+    }
+}
+
+
 }

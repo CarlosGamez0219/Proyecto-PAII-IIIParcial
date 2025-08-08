@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/Controller/EmpleadosDAO.java</file>
-            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/Bd/ConnectionBD.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/View/Menu.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/View/ListadoUsuarios.java</file>
             <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/View/Login.java</file>
-            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/nbproject/private/private.xml</file>
-            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/GeneradorHash.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Proyecto%20Segundo%20Parcial/Proyecto%20Segundo%20Parcial/ProyectoSegundoParcial/src/View/FormularioUsuarios.java</file>
         </group>
     </open-files>
 </project-private>

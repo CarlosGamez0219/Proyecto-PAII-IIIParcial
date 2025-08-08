@@ -236,11 +236,13 @@ public class FormularioDevoluciones extends javax.swing.JDialog {
             return;
         }
             
-            dao.insert(devoluciones);
-            
+            if (dao.procesarDevolucion(devoluciones)) {
             parent.refrescarInfo();
-            
             this.dispose();
+            
+        }else {
+                JOptionPane.showMessageDialog(this, "Error al procesar la devolución", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
         }
         
         if(mode.equals("UPD")){

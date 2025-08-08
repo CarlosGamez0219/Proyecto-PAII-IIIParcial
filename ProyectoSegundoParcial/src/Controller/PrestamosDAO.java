@@ -41,21 +41,69 @@ public class PrestamosDAO {
      
      public boolean insert(Object object){
         Prestamos prestamos = (Prestamos) object;
-        String sql = "INSERT INTO Prestamos (UsuarioID, EjemplarID, FechaEgreso, FechaDevolucionEstimada, EmpleadoID ) VALUES (?, ?, ?, ?, ?);";
-        try(Connection con = ConnectionBD.getConnection()){
-            PreparedStatement pst = con.prepareStatement(sql);
-             pst.setInt(1, prestamos.getUsuarioID());
-             pst.setInt(2, prestamos.getEjemplarID());
-             pst.setDate(3, new java.sql.Date(prestamos.getFechaEgreso().getTime())); // Convertir java.util.Date a java.sql.Date
-             pst.setDate(4, new java.sql.Date(prestamos.getFechaDevolucionEstimada().getTime())); // Convertir java.util.Date a java.sql.Date
-             pst.setInt(5, prestamos.getEmpleadoID());
-             return pst.executeUpdate()>0;
+        String sqlInsert = "INSERT INTO Prestamos (UsuarioID, EjemplarID, FechaEgreso, FechaDevolucionEstimada, EmpleadoID) VALUES (?, ?, ?, ?, ?);";
+        String sqlUpdateEjemplar = "UPDATE Ejemplares SET Estado = 0 WHERE EjemplarID = ? AND Estado = 1;";
         
-        }catch(SQLException ex){
-            System.err.println("Error al insertar Prestamo: " + ex.getMessage());
+        Connection con = null;
+        PreparedStatement pstInsert = null;
+        PreparedStatement pstUpdate = null;
+        
+        try{ con = ConnectionBD.getConnection();
+             con.setAutoCommit(false);
+             
+        pstInsert = con.prepareStatement(sqlInsert);
+        pstInsert.setInt(1, prestamos.getUsuarioID());
+        pstInsert.setInt(2, prestamos.getEjemplarID());
+        pstInsert.setDate(3, new java.sql.Date(prestamos.getFechaEgreso().getTime()));
+        pstInsert.setDate(4, new java.sql.Date(prestamos.getFechaDevolucionEstimada().getTime()));
+        pstInsert.setInt(5, prestamos.getEmpleadoID());
+
+        int insertados = pstInsert.executeUpdate();
+        if (insertados == 0) {
+            con.rollback();
+            System.err.println("Error: No se insertó el préstamo.");
             return false;
         }
+        
+        pstUpdate = con.prepareStatement(sqlUpdateEjemplar);
+        pstUpdate.setInt(1, prestamos.getEjemplarID());
+
+        int actualizados = pstUpdate.executeUpdate();
+        if (actualizados == 0) {
+            con.rollback();
+            System.err.println("Error: El ejemplar no está disponible o no se pudo actualizar.");
+            return false;
+        }
+        
+        con.commit();
+        return true;
     }
+        catch (SQLException ex) {
+        try {
+            if (con != null) {
+                con.rollback();
+            }
+        } catch (SQLException rollbackEx) {
+            System.err.println("Error al hacer rollback: " + rollbackEx.getMessage());
+        }
+
+        System.err.println("Error al insertar préstamo con transacción: " + ex.getMessage());
+        return false;
+        
+        } finally {
+        try {
+            if (pstInsert != null) pstInsert.close();
+            if (pstUpdate != null) pstUpdate.close();
+            if (con != null) {
+                con.setAutoCommit(true); // Restaura autocommit
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al cerrar recursos: " + ex.getMessage());
+        }
+    }
+}
+
     
     public boolean update(Object object){
         Prestamos prestamos = (Prestamos) object;
