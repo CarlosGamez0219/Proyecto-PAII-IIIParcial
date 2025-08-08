@@ -112,7 +112,7 @@ public class DevolucionesDAO {
     }
     
     public boolean procesarDevolucion(Devoluciones devolucion) {
-    String sqlDevolucion = "INSERT INTO Devoluciones (DevolucionID, EjemplarID, PrestamoID, FechaDevolucion, Comentario, EmpleadoID) VALUES (?, ?, ?, ?, ?, ?);";
+    String sqlDevolucion = "INSERT INTO Devoluciones (EjemplarID, PrestamoID, FechaDevolucion, Comentario, EmpleadoID) VALUES (?, ?, ?, ?, ?);";
     String sqlActualizarEjemplar = "UPDATE Ejemplares SET Estado = '0' WHERE EjemplarID = ?";
     String sqlActualizarPrestamo = "UPDATE Prestamos SET FechaDevolucionReal = ? WHERE PrestamoID = ?";
 
@@ -128,7 +128,7 @@ public class DevolucionesDAO {
             PreparedStatement pstPrestamo = con.prepareStatement(sqlActualizarPrestamo);
         ) {
             // Insertar en Devoluciones
-            pstDevolucion.setInt(1, devolucion.getEjemplarID());
+            //pstDevolucion.setInt(1, devolucion.getEjemplarID());
             pstDevolucion.setInt(2, devolucion.getPrestamoID());
             pstDevolucion.setDate(3, new java.sql.Date(devolucion.getFechaDevolucion().getTime()));
             pstDevolucion.setString(4, devolucion.getComentario());

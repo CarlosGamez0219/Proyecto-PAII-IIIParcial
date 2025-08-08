@@ -182,9 +182,10 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "✅ Bienvenido " + empleado.getNombreEmpleado());
 
         
-        Menu menu = new Menu(null, true, empleado); 
+        Menu menu = new Menu(empleado);;
         menu.setVisible(true);
-        this.dispose();
+        this.dispose(); 
+        
         } else {
         JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }
