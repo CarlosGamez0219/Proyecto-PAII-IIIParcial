@@ -7,7 +7,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class GeneradorHash {
     public static void main(String[] args) {
-        String contraseña = "gabrielaM409"; // ← Cambia aquí si quieres otra clave
+        String contraseña = "gabrielaM409";
         String hash = BCrypt.hashpw(contraseña, BCrypt.gensalt(12));
         System.out.println("Hash generado: " + hash);
     }
