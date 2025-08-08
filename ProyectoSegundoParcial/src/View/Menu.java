@@ -3,27 +3,87 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
+import Model.Empleados;
 import View.ListadoAutores;
 import View.ListadoLibros;
 import View.ListaRol;
 import View.ListadoCategorias;
+import View.ListadoPrestamos;
+import View.ListadoUsuarios;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dell
  */
-public class Menu extends javax.swing.JDialog {
+public class Menu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
 
     /**
      * Creates new form Menu
      */
-    public Menu(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private Empleados empleadoActual;
+    
+    public Menu(Empleados empleado) {
+        //super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-    }
+        
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/imagenes/Biblioteca.png"));
+        Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        jbl_Bibliteca.setIcon(new ImageIcon(imagenRedimensionada));
+        
+        System.out.println(getClass().getResource("/imagenes/Biblioteca.png"));
+        
+        
+        setVisible(true);
 
+        this.empleadoActual = empleado;
+        
+        String rolTexto;
+        switch (empleado.getRolID()) {
+        case 1:
+            rolTexto = "Administrador";
+            break;
+        case 2:
+            rolTexto = "Bibliotecario";
+            break;
+        case 3:
+            rolTexto = "IT";
+            break;
+        default:
+            rolTexto = "Desconocido";
+            break;
+        }
+
+
+        jlb_Empleado.setText("Bienvenido, " + empleado.getNombreEmpleado() + " (" + rolTexto + ")");
+
+        // Control de permisos por rol
+        switch (empleado.getRolID()) {
+        case 1: // Administrador tiene acceso total
+            break;
+
+        case 2: // Bibliotecario
+            btn_Empleados.setEnabled(false);
+            btn_Rol.setEnabled(false);
+            btn_TipoUsuario.setEnabled(false);
+            break;
+
+        case 3:
+            break;
+
+            default:
+            JOptionPane.showMessageDialog(this, "Rol no reconocido. Acceso limitado.");
+            break;
+    }
+        
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,11 +98,27 @@ public class Menu extends javax.swing.JDialog {
         btn_Autores = new javax.swing.JButton();
         btn_Categoria = new javax.swing.JButton();
         jLabelBiblioteca = new javax.swing.JLabel();
+        btn_TipoUsuario = new javax.swing.JButton();
+        btn_Devoluiones = new javax.swing.JButton();
+        btn_Ejemplares = new javax.swing.JButton();
+        btn_Empleados = new javax.swing.JButton();
+        btn_Prestamos = new javax.swing.JButton();
+        btn_Usuarios = new javax.swing.JButton();
+        jbl_Bibliteca = new javax.swing.JLabel();
+        btn_ReportePrestamos = new javax.swing.JButton();
+        btn_LibrosPopulares = new javax.swing.JButton();
+        btn_PrestamosMensuales = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jlb_Empleado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(153, 255, 153));
+        setTitle("Bienvendo a Nuestra Bibliteca");
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        btn_Libros.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_Libros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Libros.setText("Libros");
         btn_Libros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,7 +126,7 @@ public class Menu extends javax.swing.JDialog {
             }
         });
 
-        btn_Rol.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_Rol.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Rol.setText("Rol");
         btn_Rol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +134,7 @@ public class Menu extends javax.swing.JDialog {
             }
         });
 
-        btn_Autores.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_Autores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Autores.setText("Autores");
         btn_Autores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +142,7 @@ public class Menu extends javax.swing.JDialog {
             }
         });
 
-        btn_Categoria.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_Categoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Categoria.setText("Categorias");
         btn_Categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,42 +150,185 @@ public class Menu extends javax.swing.JDialog {
             }
         });
 
-        jLabelBiblioteca.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelBiblioteca.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelBiblioteca.setText("Biblioteca");
+
+        btn_TipoUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_TipoUsuario.setText("TipoUsuario");
+        btn_TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TipoUsuarioActionPerformed(evt);
+            }
+        });
+
+        btn_Devoluiones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Devoluiones.setText("Devoluciones");
+        btn_Devoluiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DevoluionesActionPerformed(evt);
+            }
+        });
+
+        btn_Ejemplares.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Ejemplares.setText("Ejemplares");
+        btn_Ejemplares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EjemplaresActionPerformed(evt);
+            }
+        });
+
+        btn_Empleados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Empleados.setText("Empleados");
+        btn_Empleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EmpleadosActionPerformed(evt);
+            }
+        });
+
+        btn_Prestamos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Prestamos.setText("Prestamos");
+        btn_Prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PrestamosActionPerformed(evt);
+            }
+        });
+
+        btn_Usuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Usuarios.setText("Usuarios");
+        btn_Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_UsuariosActionPerformed(evt);
+            }
+        });
+
+        btn_ReportePrestamos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_ReportePrestamos.setText("ReportePrestamos");
+        btn_ReportePrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ReportePrestamosActionPerformed(evt);
+            }
+        });
+
+        btn_LibrosPopulares.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_LibrosPopulares.setText("Libros Mas Populares");
+        btn_LibrosPopulares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LibrosPopularesActionPerformed(evt);
+            }
+        });
+
+        btn_PrestamosMensuales.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_PrestamosMensuales.setText("Prestamos Mensuales");
+        btn_PrestamosMensuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PrestamosMensualesActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Seccion Transacciones");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(51, 204, 255));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Seccion de Reportes");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jlb_Empleado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Autores))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Categoria))
-                .addContainerGap(57, Short.MAX_VALUE))
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addContainerGap(97, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jbl_Bibliteca, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(115, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_Autores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_TipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Ejemplares, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_Rol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Devoluiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(92, 92, 92))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabelBiblioteca)
-                .addGap(18, 18, 18)
+
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbl_Bibliteca, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBiblioteca))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Libros)
                     .addComponent(btn_Rol))
-                .addGap(50, 50, 50)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Categoria)
-                    .addComponent(btn_Autores))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(btn_Autores)
+                    .addComponent(btn_Categoria))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_TipoUsuario)
+                    .addComponent(btn_Devoluiones))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Ejemplares)
+                    .addComponent(btn_Empleados))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Prestamos)
+                    .addComponent(btn_Usuarios))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,73 +337,109 @@ public class Menu extends javax.swing.JDialog {
     private void btn_AutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AutoresActionPerformed
         // TODO add your handling code here:
         
-        new ListadoAutores().setVisible(true);
-        this.dispose();
+        setVisible(false);
+        new ListadoAutores(Menu.this).setVisible(true);
+       
     }//GEN-LAST:event_btn_AutoresActionPerformed
 
     private void btn_LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LibrosActionPerformed
         // TODO add your handling code here:
-         new ListadoLibros().setVisible(true);
-         this.dispose();
+         setVisible(false); 
+        new ListadoLibros(Menu.this).setVisible(true);
     }//GEN-LAST:event_btn_LibrosActionPerformed
 
     private void btn_RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RolActionPerformed
         // TODO add your handling code here:
-        new ListaRol().setVisible(true);
-        
-        this.dispose();
+        setVisible(false);
+        new ListaRol(Menu.this).setVisible(true);
     }//GEN-LAST:event_btn_RolActionPerformed
 
     private void btn_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CategoriaActionPerformed
         // TODO add your handling code here:
         
-        new ListadoCategorias().setVisible(true);
-        
-        this.dispose();
+         setVisible(false); 
+        new ListadoCategorias(Menu.this).setVisible(true);
     }//GEN-LAST:event_btn_CategoriaActionPerformed
+
+    private void btn_TipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TipoUsuarioActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        new ListadoTipoUsuario(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_TipoUsuarioActionPerformed
+
+    private void btn_DevoluionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DevoluionesActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        new ListadoDevoluciones(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_DevoluionesActionPerformed
+
+    private void btn_EjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EjemplaresActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ListadoEjemplares(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_EjemplaresActionPerformed
+
+    private void btn_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadosActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ListadoEmpleados(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_EmpleadosActionPerformed
+
+    private void btn_PrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrestamosActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        new ListadoPrestamos(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_PrestamosActionPerformed
+
+    private void btn_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UsuariosActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        new ListadoUsuarios(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_UsuariosActionPerformed
+
+    private void btn_ReportePrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReportePrestamosActionPerformed
+        // TODO add your handling code here:
+         setVisible(false);
+        new ListadoReportePrestamos(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_ReportePrestamosActionPerformed
+
+    private void btn_LibrosPopularesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LibrosPopularesActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ListadoLibrosMasPopulares(Menu.this).setVisible(true);
+        
+    }//GEN-LAST:event_btn_LibrosPopularesActionPerformed
+
+    private void btn_PrestamosMensualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrestamosMensualesActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ListadoPrestamoLibrosMensual(Menu.this).setVisible(true);
+    }//GEN-LAST:event_btn_PrestamosMensualesActionPerformed
    
     /**this.setVisible(false);
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Menu dialog = new Menu(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Autores;
     private javax.swing.JButton btn_Categoria;
+    private javax.swing.JButton btn_Devoluiones;
+    private javax.swing.JButton btn_Ejemplares;
+    private javax.swing.JButton btn_Empleados;
     private javax.swing.JButton btn_Libros;
+    private javax.swing.JButton btn_LibrosPopulares;
+    private javax.swing.JButton btn_Prestamos;
+    private javax.swing.JButton btn_PrestamosMensuales;
+    private javax.swing.JButton btn_ReportePrestamos;
     private javax.swing.JButton btn_Rol;
+    private javax.swing.JButton btn_TipoUsuario;
+    private javax.swing.JButton btn_Usuarios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBiblioteca;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jbl_Bibliteca;
+    private javax.swing.JLabel jlb_Empleado;
     // End of variables declaration//GEN-END:variables
 }

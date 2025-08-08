@@ -22,7 +22,7 @@ public class CategoriasDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Categorias;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -39,7 +39,7 @@ public class CategoriasDAO {
     public boolean insert(Object object){
         Categorias categorias = (Categorias) object;
         String sql = "INSERT INTO Categorias (CategoriaDescripcion) VALUES (?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, categorias.getCategoriaDescripcion());
              return pst.executeUpdate()>0;
@@ -53,7 +53,7 @@ public class CategoriasDAO {
     public boolean update(Object object){
         Categorias categorias = (Categorias) object;
         String sql = "UPDATE Categorias SET CategoriaDescripcion = ? WHERE CategoriaID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, categorias.getCategoriaDescripcion());
              pst.setInt(2, categorias.getCategoriaID());  // Aquí es importante usar el ID para actualizar el libro correcto
@@ -67,7 +67,7 @@ public class CategoriasDAO {
     
     public boolean delete(int CategoriaID){
         String sql = "DELETE FROM Categorias WHERE CategoriaID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1,CategoriaID);
              return pst.executeUpdate()>0;
@@ -81,7 +81,7 @@ public class CategoriasDAO {
     public Object getByCategoriaID(int CategoriaID){
         String sql = "SELECT * FROM Categorias WHERE CategoriaID = ?;";
         Categorias categorias = new Categorias();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, CategoriaID);
             

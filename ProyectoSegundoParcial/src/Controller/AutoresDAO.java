@@ -23,7 +23,7 @@ public class AutoresDAO {
     public List<Object> getAll(){
         List<Object> listado = new ArrayList<>();
         String sql = "SELECT * FROM Autores;";
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             Statement stmt = con.createStatement();
             ResultSet resultado = stmt.executeQuery(sql);
             while(resultado.next()){
@@ -40,7 +40,7 @@ public class AutoresDAO {
     public boolean insert(Object object){
         Autores autores = (Autores) object;
         String sql = "INSERT INTO Autores (NombreAutor, ApellidoAutor) VALUES (?, ?);";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, autores .getNombreAutor());
              pst.setString(2, autores .getApellidoAutor());
@@ -55,7 +55,7 @@ public class AutoresDAO {
     public boolean update(Object object){
        Autores autores = (Autores) object;
         String sql = "UPDATE Autores SET NombreAutor = ?, ApellidoAutor = ? WHERE AutorID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
              pst.setString(1, autores .getNombreAutor());
              pst.setString(2, autores .getApellidoAutor());
@@ -70,7 +70,7 @@ public class AutoresDAO {
     
     public boolean delete(int AutorID){
         String sql = "DELETE FROM Autores WHERE AutorID = ?";
-        try(Connection con = ConnectionBD.geConnection()){
+        try(Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, AutorID);
              return pst.executeUpdate()>0;
@@ -84,7 +84,7 @@ public class AutoresDAO {
     public Object getByAutorID(int AutorID){
         String sql = "SELECT * FROM Autores WHERE AutorID = ?;";
         Autores autores = new Autores();
-        try (Connection con = ConnectionBD.geConnection()){
+        try (Connection con = ConnectionBD.getConnection()){
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, AutorID);
             
