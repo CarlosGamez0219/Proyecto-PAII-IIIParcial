@@ -113,15 +113,11 @@ INSERT INTO Categorias (CategoriaDescripcion) VALUES
 
 -- Insertar Tipo de Usuario
 INSERT INTO TipoUsuario (DescripcionUsuario) VALUES 
-('Estudiante'), ('Profesor'), ('Investigador'), 
-('Administrativo'), ('Externo'), ('Alumni'), 
-('Bibliotecario'), ('Visitante'), ('Online'), ('Invitado');
+('Estudiante'), ('Profesor'), ('Interno');
 
 -- Insertar Roles
 INSERT INTO Rol (RolDescripcion) VALUES 
-('Administrador'), ('Bibliotecario'), ('Asistente'), 
-('Catalogador'), ('Recepcionista'), ('Supervisor'), 
-('Auxiliar'), ('Digitador'), ('Técnico'), ('Soporte');
+('Administrador'), ('Bibliotecario'), ('IT');
 
 -- Insertar Autores
 INSERT INTO Autores (NombreAutor, ApellidoAutor) VALUES 
@@ -178,28 +174,28 @@ INSERT INTO Ejemplares (LibroID, FechaIngreso, Estado) VALUES
 -- Insertar Usuarios
 INSERT INTO Usuarios (Correo, Telefono, Direccion, Nombre, Apellido, TipoUsuarioID, Status, Contraseña) VALUES
 ('ana.lopez@mail.com', '504-22330044', 'Av. La Paz #123', 'Ana', 'López', 1, 1, 'hashAna2025'),
-('carlos.martinez@mail.com', '504-22330045', 'Col. El Prado #45', 'Carlos', 'Martínez', 2, 1, 'hashCarlito'),
-('marisol.ramirez@mail.com', '504-22330046', 'Calle Central #789', 'Marisol', 'Ramírez', 3, 1, 'hashMari'),
-('juan.perez@mail.com', '504-22330047', 'Boulevar Morazán #56', 'Juan', 'Pérez', 4, 1, 'hashJuan'),
-('luis.gomez@mail.com', '504-22330048', 'Col. El Centro #98', 'Luis', 'Gómez', 5, 1, 'hashLuis'),
-('elena.herrera@mail.com', '504-22330049', 'Av. La Reforma #112', 'Elena', 'Herrera', 6, 1, 'hashElena'),
-('maria.vargas@mail.com', '504-22330050', 'Calle Real #5', 'María', 'Vargas', 7, 1, 'hashMaria'),
-('roberto.ruiz@mail.com', '504-22330051', 'Col. Montecillo #21', 'Roberto', 'Ruíz', 8, 1, 'hashRoberto'),
-('sofia.mendez@mail.com', '504-22330052', 'Av. Max León #34', 'Sofía', 'Méndez', 9, 1, 'hashSofia'),
-('diego.castillo@mail.com', '504-22330053', 'Callejón Suazo #7', 'Diego', 'Castillo', 10, 1, 'hashDiego');
+('carlos.martinez@mail.com', '504-22330045', 'Col. El Prado #45', 'Carlos', 'Martínez', 1, 1, 'hashCarlito'),
+('marisol.ramirez@mail.com', '504-22330046', 'Calle Central #789', 'Marisol', 'Ramírez', 2, 1, 'hashMari'),
+('juan.perez@mail.com', '504-22330047', 'Boulevar Morazán #56', 'Juan', 'Pérez', 1, 1, 'hashJuan'),
+('luis.gomez@mail.com', '504-22330048', 'Col. El Centro #98', 'Luis', 'Gómez', 1, 1, 'hashLuis'),
+('elena.herrera@mail.com', '504-22330049', 'Av. La Reforma #112', 'Elena', 'Herrera', 1, 1, 'hashElena'),
+('maria.vargas@mail.com', '504-22330050', 'Calle Real #5', 'María', 'Vargas', 1, 1, 'hashMaria'),
+('roberto.ruiz@mail.com', '504-22330051', 'Col. Montecillo #21', 'Roberto', 'Ruíz', 1, 1, 'hashRoberto'),
+('sofia.mendez@mail.com', '504-22330052', 'Av. Max León #34', 'Sofía', 'Méndez', 2, 1, 'hashSofia'),
+('diego.castillo@mail.com', '504-22330053', 'Callejón Suazo #7', 'Diego', 'Castillo', 2, 1, 'hashDiego');
 
 -- Insertar Empleados
 INSERT INTO Empleados (NombreEmpleado, Contraseña, RolID, Status) VALUES
-('Luis Hernández', 'empHashLuis', 1, 1),
-('María Torres', 'empHashMaria', 2, 1),
-('Jorge Díaz', 'empHashJorge', 3, 1),
-('Patricia Silva', 'empHashPatricia', 4, 1),
-('Andrés Ramírez', 'empHashAndres', 5, 1),
-('Verónica López', 'empHashVeronica', 6, 1),
-('José Figueroa', 'empHashJose', 7, 1),
-('Claudia Méndez', 'empHashClaudia', 8, 1),
-('Ricardo Cruz', 'empHashRicardo', 9, 1),
-('Gabriela Morales', 'empHashGabriela', 10, 1);
+('Luis Hernández', '$2a$12$5a73SnF6ZAm740x2lnEW4eKQr9uqELgWITMVC8Fo.YLgI0kF3ftLi', 1, 1),
+('María Torres', '$2a$12$zKWXlvObEKuwyn06AkFd3O0qKFcGrSKoZkvaOSuvsEh55hM/kR4z6', 2, 1),
+('Jorge Díaz', '$2a$12$gsXpGQiFO3U0bfwBy2VbB.nHjXdB6vyzgxzNmQPCjXR9wLkUvUj4a', 2, 1),
+('Patricia Silva', '$2a$12$J1D9IypwwfmdyURraOOQwuD5tl2vO2dU6a2I.hvnRGO2F.3Xc4qRq', 2, 1),
+('Andrés Ramírez', '$2a$12$tDX14IBl1P3YqvNckEB0OeOjm1Bv9Cf/Y1OuA7saYDzZw4j6PmUx2', 2, 1),
+('Verónica López', '$2a$12$lTVODWVDxnAROY9uS/wDTuZGn5JBi8opmHMTIzPh1y1P/DEpKOtOy', 2, 1),
+('José Figueroa', '$2a$12$8i3Zhhfm1gvY2M4ZyJWzlO0eNoLDt7TNcfJXZGER7CfyhzlZ/7Sk6', 2, 1),
+('Claudia Méndez', '$2a$12$QmDuJGromSND2n1ZzDe4UOztlmfTM22sb8iqHLjLMjVdrW3HeV.Xm', 3, 1),
+('Ricardo Cruz', '$2a$12$L9Zeku7.r/OYVCIaljB24uDuVZ5.srl571iyy1EVKNGGfrpyGVOWe', 2, 1),
+('Gabriela Morales', '$2a$12$qxytQcXKfS8Sc.FhWkgXGO4JH076aNuGnkyQNOsvVQCClZoBiT5wO', 2, 1);
 
 -- Insertar Préstamos
 INSERT INTO Prestamos (UsuarioID, EjemplarID, FechaEgreso, FechaDevolucionEstimada, EmpleadoID) VALUES
@@ -232,7 +228,7 @@ CREATE INDEX idx_autores_autorid ON Autores(AutorID);
 CREATE INDEX idx_usuarios_usuarioid ON Usuarios(UsuarioID);
 
 -- Consultas avanzadas
-/*1. Libros prestados por usuario */
+/*1. Libros pautoresrestados por usuario */
 SELECT 
   CONCAT(u.Nombre, ' ', u.Apellido) AS NombreCompleto,
   l.Titulo,
@@ -253,6 +249,7 @@ LEFT JOIN Devoluciones d ON p.PrestamoID = d.PrestamoID
 WHERE d.PrestamoID IS NULL AND CURDATE() > p.FechaDevolucionEstimada;
 
 -- 3. Libros mas populares.
+CREATE VIEW LibrosMasPopulares AS
 SELECT 
   l.Titulo, COUNT(*) AS TotalPrestamos
 FROM Prestamos p
